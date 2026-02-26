@@ -156,7 +156,7 @@ const chartData = {
   // Table 2 — Spatial: 6 benchmarks × 5 models (ACE-Brain-8B 最左, then RoboBrain2.0-7B, RoboBrain2.5-8B, VeBrain-7B, Vlaser-8B)
   "spatial-intelligence": {
     models: [
-      { name: "VSI",  yAxis: { min: 10, max: 68 }, metrics: [
+      { name: "VSI",  yAxis: { min: 0, max: 68 }, metrics: [
         { label: "ACE-Brain-8B", value: 63.3 },
         { label: "RoboBrain2.0-7B", value: 36.1 },
         { label: "RoboBrain2.5-8B", value: 41.0 },
@@ -170,14 +170,14 @@ const chartData = {
         { label: "VeBrain-7B", value: 27.3 },
         { label: "Vlaser-8B", value: 27.2 },
       ]},
-      { name: "BLINK", yAxis:{ min: 10, max: 90 }, metrics: [
+      { name: "BLINK", yAxis:{ min: 0, max: 90 }, metrics: [
         { label: "ACE-Brain-8B", value: 83.9 },
         { label: "RoboBrain2.0-7B", value: 81.4 },
         { label: "RoboBrain2.5-8B", value: 84.3 },
         { label: "VeBrain-7B", value: 79.7 },
         { label: "Vlaser-8B", value: 84.9 },
       ]},
-      { name: "SITE", yAxis:{ min: 10, max: 60 }, metrics: [
+      { name: "SITE", yAxis:{ min: 0, max: 60 }, metrics: [
         { label: "ACE-Brain-8B", value: 53.1 },
         { label: "RoboBrain2.0-7B", value: 49.2 },
         { label: "RoboBrain2.5-8B", value: 52.6 },
