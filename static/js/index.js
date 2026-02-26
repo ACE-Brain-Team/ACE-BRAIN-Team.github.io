@@ -156,7 +156,7 @@ const chartData = {
   // Table 2 — Spatial: 6 benchmarks × 5 models (ACE-Brain-8B 最左, then RoboBrain2.0-7B, RoboBrain2.5-8B, VeBrain-7B, Vlaser-8B)
   "spatial-intelligence": {
     models: [
-      { name: "VSI", metrics: [
+      { name: "VSI",  yAxis: { min: 35, max: 80 }, metrics: [
         { label: "ACE-Brain-8B", value: 63.3 },
         { label: "RoboBrain2.0-7B", value: 36.1 },
         { label: "RoboBrain2.5-8B", value: 41.0 },
@@ -374,6 +374,31 @@ function createBar(metric) {
   return barContainer;
 }
 
+function getModelScale(model) {
+  // 优先使用手动配置；未配置时按当前图的数据自动计算范围
+  if (model && model.yAxis && Number.isFinite(model.yAxis.min) && Number.isFinite(model.yAxis.max) && model.yAxis.max > model.yAxis.min) {
+    return { min: model.yAxis.min, max: model.yAxis.max };
+  }
+
+  const values = (model.metrics || [])
+    .map(m => Number(m.value))
+    .filter(v => Number.isFinite(v));
+
+  if (!values.length) return { min: 0, max: 1 };
+
+  const dataMin = Math.min(...values);
+  const dataMax = Math.max(...values);
+
+  if (dataMax === dataMin) {
+    return { min: Math.min(0, dataMin), max: dataMax + 1 };
+  }
+
+  const padding = (dataMax - dataMin) * 0.1;
+  const min = Math.max(0, dataMin - padding);
+  const max = dataMax + padding;
+  return { min, max };
+}
+
 function createSingleChart(model) {
   const chart = document.createElement("div");
   chart.className = "single-chart";
@@ -385,7 +410,17 @@ function createSingleChart(model) {
   const row = document.createElement("div");
   row.className = "chart-row";
 
-  model.metrics.forEach(m => row.appendChild(createBar(m)));
+  const scale = getModelScale(model);
+
+  model.metrics.forEach(m => {
+    const barEl = createBar(m);
+    const bar = barEl.querySelector(".bar");
+    if (bar) {
+      bar.dataset.yMin = String(scale.min);
+      bar.dataset.yMax = String(scale.max);
+    }
+    row.appendChild(barEl);
+  });
 
   chart.appendChild(h4);
   chart.appendChild(row);
@@ -446,7 +481,11 @@ function animateGroupBars(groupEl) {
   // animate stagger with smoother timing (value can be float, e.g. 36.1)
   bars.forEach((bar, index) => {
     const value = parseFloat(bar.dataset.value || "0", 10);
-    const calculatedHeight = (Math.max(0, Math.min(100, value)) / 100) * maxHeight;
+    const yMin = parseFloat(bar.dataset.yMin || "0", 10);
+    const yMax = parseFloat(bar.dataset.yMax || "100", 10);
+    const range = yMax - yMin;
+    const normalized = range > 0 ? (value - yMin) / range : 0;
+    const calculatedHeight = Math.max(0, Math.min(1, normalized)) * maxHeight;
 
     setTimeout(() => {
       bar.style.height = calculatedHeight + "px";
