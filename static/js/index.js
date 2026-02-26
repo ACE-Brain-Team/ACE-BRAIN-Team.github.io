@@ -191,7 +191,7 @@ const chartData = {
         { label: "VeBrain-7B", value: 73.3 },
         { label: "Vlaser-8B", value: 66.7 },
       ]},
-      { name: "Mindcube", metrics: [
+      { name: "Mindcube", yAxis:{ min: 10, max: 85 },metrics: [
         { label: "ACE-Brain-8B", value: 82.1 },
         { label: "RoboBrain2.0-7B", value: 31.2 },
         { label: "RoboBrain2.5-8B", value: 28.1 },
