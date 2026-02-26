@@ -290,6 +290,20 @@ a:hover::before {
     margin: 8px 4px;
 }
 
+/* Keep publication buttons vertically centered even with footer-link class */
+.publication-links .button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.publication-links .button .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .dnerf {
   font-variant: small-caps;
 }

@@ -218,21 +218,21 @@ const chartData = {
         { label: "VeBrain-7B", value: 22.9 },
         { label: "Vlaser-8B", value: 29.1 },
       ]},
-      { name: "DriveAction", metrics: [
+      { name: "DriveAction", yAxis:{ min: 60, max: 82}, metrics: [
         { label: "ACE-Brain-8B", value: 81.3 },
         { label: "RoboBrain2.0-7B", value: 80.9 },
         { label: "RoboBrain2.5-8B", value: 80.5 },
         { label: "VeBrain-7B", value: 78.3 },
         { label: "Vlaser-8B", value: 78.1 },
       ]},
-      { name: "NuscenesQA", metrics: [
+      { name: "NuscenesQA", yAxis:{ min: 0, max: 60 },metrics: [
         { label: "ACE-Brain-8B", value: 58.8 },
         { label: "RoboBrain2.0-7B", value: 32.3 },
         { label: "RoboBrain2.5-8B", value: 33.2 },
         { label: "VeBrain-7B", value: 29.3 },
         { label: "Vlaser-8B", value: 33.1 },
       ]},
-      { name: "NuPlanQA", metrics: [
+      { name: "NuPlanQA", yAxis:{ min: 60, max: 92 },metrics: [
         { label: "ACE-Brain-8B", value: 91.7 },
         { label: "RoboBrain2.0-7B", value: 82.8 },
         { label: "RoboBrain2.5-8B", value: 79.3 },
