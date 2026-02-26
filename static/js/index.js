@@ -156,7 +156,7 @@ const chartData = {
   // Table 2 — Spatial: 6 benchmarks × 5 models (ACE-Brain-8B 最左, then RoboBrain2.0-7B, RoboBrain2.5-8B, VeBrain-7B, Vlaser-8B)
   "spatial-intelligence": {
     models: [
-      { name: "VSI",  yAxis: { min: 30, max: 80 }, metrics: [
+      { name: "VSI",  yAxis: { min: 10, max: 68 }, metrics: [
         { label: "ACE-Brain-8B", value: 63.3 },
         { label: "RoboBrain2.0-7B", value: 36.1 },
         { label: "RoboBrain2.5-8B", value: 41.0 },
