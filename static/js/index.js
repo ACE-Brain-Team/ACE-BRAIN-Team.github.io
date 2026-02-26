@@ -177,7 +177,7 @@ const chartData = {
         { label: "VeBrain-7B", value: 79.7 },
         { label: "Vlaser-8B", value: 84.9 },
       ]},
-      { name: "SITE", yAxis:{ min: 10, max: 60 }, metrics: [
+      { name: "SITE", yAxis:{ min: 30, max: 60 }, metrics: [
         { label: "ACE-Brain-8B", value: 53.1 },
         { label: "RoboBrain2.0-7B", value: 49.2 },
         { label: "RoboBrain2.5-8B", value: 52.6 },
